@@ -1,5 +1,14 @@
 import { ActionIcon, ActionIconProps, Hotkey } from '@lobehub/ui';
-import { Compass, FolderClosed, MessageSquare, Palette } from 'lucide-react';
+import {
+  BotMessageSquare,
+  Compass,
+  FolderClosed,
+  HeartCrack,
+  MessagesSquare,
+  Orbit,
+  Palette,
+  User,
+} from 'lucide-react';
 import Link from 'next/link';
 import { memo } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -24,6 +33,23 @@ export interface TopActionProps {
   tab?: SidebarTabKey;
 }
 
+// chat can bring in the current context unless you hold alt
+// add a play currency in there right now
+// click on a button to bring in the current context with you, so no context
+// drop
+
+/**
+ * Assistant Chats
+ * Repos
+ *
+ * Discover (people, agents, napps)
+ * Stucks
+ * Value (ambient attribution, trading)
+ *
+ * Contacts ? connections ? installed or linked agents, people, and napps ?
+ * Agentic chats
+ */
+
 const TopActions = memo<TopActionProps>(({ tab, isPinned }) => {
   const { t } = useTranslation('common');
   const switchBackToChat = useGlobalStore((s) => s.switchBackToChat);
@@ -34,6 +60,10 @@ const TopActions = memo<TopActionProps>(({ tab, isPinned }) => {
   const isFilesActive = tab === SidebarTabKey.Files;
   const isDiscoverActive = tab === SidebarTabKey.Discover;
   const isImageActive = tab === SidebarTabKey.Image;
+  const isAgenticChatsActive = tab === SidebarTabKey.AgenticChats;
+  const isContactsActive = tab === SidebarTabKey.Contacts;
+  const isEconomyActive = tab === SidebarTabKey.Economy;
+  const isStucksActive = tab === SidebarTabKey.Stucks;
 
   return (
     <Flexbox gap={8}>
@@ -53,28 +83,18 @@ const TopActions = memo<TopActionProps>(({ tab, isPinned }) => {
       >
         <ActionIcon
           active={isChatActive}
-          icon={MessageSquare}
+          icon={BotMessageSquare}
           size={ICON_SIZE}
           title={
             <Flexbox align={'center'} gap={8} horizontal justify={'space-between'}>
-              <span>{t('tab.chat')}</span>
+              <span>{'Assistant Chats'}</span>
               <Hotkey inverseTheme keys={hotkey} />
             </Flexbox>
           }
           tooltipProps={{ placement: 'right' }}
         />
       </Link>
-      {enableKnowledgeBase && (
-        <Link aria-label={t('tab.files')} href={'/files'}>
-          <ActionIcon
-            active={isFilesActive}
-            icon={FolderClosed}
-            size={ICON_SIZE}
-            title={t('tab.files')}
-            tooltipProps={{ placement: 'right' }}
-          />
-        </Link>
-      )}
+
       <Link aria-label={t('tab.aiImage')} href={'/image'}>
         <ActionIcon
           active={isImageActive}
@@ -84,6 +104,18 @@ const TopActions = memo<TopActionProps>(({ tab, isPinned }) => {
           tooltipProps={{ placement: 'right' }}
         />
       </Link>
+
+      {enableKnowledgeBase && (
+        <Link aria-label={t('tab.files')} href={'/files'}>
+          <ActionIcon
+            active={isFilesActive}
+            icon={FolderClosed}
+            size={ICON_SIZE}
+            title={'Repos'}
+            tooltipProps={{ placement: 'right' }}
+          />
+        </Link>
+      )}
       {showMarket && (
         <Link aria-label={t('tab.discover')} href={'/discover'}>
           <ActionIcon
@@ -95,6 +127,43 @@ const TopActions = memo<TopActionProps>(({ tab, isPinned }) => {
           />
         </Link>
       )}
+      <Link aria-label={'Stucks'} href={'/stucks'}>
+        <ActionIcon
+          active={isStucksActive}
+          icon={HeartCrack}
+          size={ICON_SIZE}
+          title={'Stucks'}
+          tooltipProps={{ placement: 'right' }}
+        />
+      </Link>
+      <Link aria-label={'Economy'} href={'/economy'}>
+        <ActionIcon
+          active={isEconomyActive}
+          icon={Orbit}
+          size={ICON_SIZE}
+          title={'Economy'}
+          tooltipProps={{ placement: 'right' }}
+        />
+      </Link>
+
+      <Link aria-label={'Contacts'} href={'/contacts'}>
+        <ActionIcon
+          active={isContactsActive}
+          icon={User}
+          size={ICON_SIZE}
+          title={'Contacts'}
+          tooltipProps={{ placement: 'right' }}
+        />
+      </Link>
+      <Link aria-label={'Agentic Chats'} href={'/agentic-chats'}>
+        <ActionIcon
+          active={isAgenticChatsActive}
+          icon={MessagesSquare}
+          size={ICON_SIZE}
+          title={'Agentic Chats'}
+          tooltipProps={{ placement: 'right' }}
+        />
+      </Link>
     </Flexbox>
   );
 });

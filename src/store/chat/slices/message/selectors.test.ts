@@ -225,7 +225,7 @@ describe('chatSelectors', () => {
           content: 'Goodbye World',
           role: 'user',
           meta: {
-            avatar: '😀',
+            avatar: DEFAULT_INBOX_AVATAR,
           },
         },
         {
