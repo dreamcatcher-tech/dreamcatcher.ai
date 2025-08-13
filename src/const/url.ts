@@ -7,18 +7,19 @@ import { isDev } from '@/utils/env';
 import pkg from '../../package.json';
 import { INBOX_SESSION_ID } from './session';
 
+
 export const UTM_SOURCE = 'chat_preview';
 
-export const OFFICIAL_URL = 'https://lobechat.com';
-export const OFFICIAL_PREVIEW_URL = 'https://chat-preview.lobehub.com';
-export const OFFICIAL_SITE = 'https://lobehub.com';
+export const OFFICIAL_URL = 'https://dreamcatcher.ai';
+export const OFFICIAL_PREVIEW_URL = 'https://dev.dreamcatcher.ai';
+export const OFFICIAL_SITE = 'https://dreamcatcher.ai';
 
 export const OG_URL = '/og/cover.png?v=1';
 
 export const GITHUB = pkg.homepage;
 export const GITHUB_ISSUES = urlJoin(GITHUB, 'issues/new/choose');
-export const CHANGELOG = 'https://lobehub.com/changelog';
-export const DOCKER_IMAGE = 'https://hub.docker.com/r/lobehub/lobe-chat';
+export const CHANGELOG = 'https://dreamcatcher.ai/changelog';
+export const DOCKER_IMAGE = 'https://hub.docker.com/r/dreamcatcher/dreamcatcher';
 
 export const DOCUMENTS = urlJoin(OFFICIAL_SITE, '/docs');
 export const USAGE_DOCUMENTS = urlJoin(DOCUMENTS, '/usage');
