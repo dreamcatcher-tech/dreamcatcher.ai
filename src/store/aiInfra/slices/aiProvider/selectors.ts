@@ -108,7 +108,7 @@ const isProviderEnableResponseApi = (id: string) => (s: AIProviderStoreState) =>
 
   if (typeof enableResponseApi === 'boolean') return enableResponseApi;
 
-  return providerCfg?.settings?.supportResponsesApi ?? false;
+  return providerCfg?.settings?.supportResponsesApi ?? true;
 };
 
 export const aiProviderSelectors = {
