@@ -42,6 +42,9 @@ const groqChatModels: AIChatModelCard[] = [
       ],
     },
     releasedAt: '2025-08-06',
+    settings: {
+      extendParams: ['reasoningEffort'],
+    },
     type: 'chat',
   },
   {
@@ -63,6 +66,9 @@ const groqChatModels: AIChatModelCard[] = [
       ],
     },
     releasedAt: '2025-08-06',
+    settings: {
+      extendParams: ['reasoningEffort'],
+    },
     type: 'chat',
   },
   {
